@@ -1,0 +1,20 @@
+{% extends 'client/base.html' %} {% load static %} {% load crispy_forms_tags %}
+{% block content %}  {% crispy form %}
+{% block cover %}
+<div class="container">
+  <form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">New client</legend>
+      {{ form|crispy }}
+    </fieldset>
+    <div class="form-group">
+      <button class="btn btn-outline-info" type="submit" >
+        ADD
+      </button>
+    </div>
+  </form>
+    </div>
+</div>
+{% endblock cover %}
+{% endblock content %}

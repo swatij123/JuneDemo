@@ -1,0 +1,56 @@
+{% extends 'client/base.html' %} {% load static %} {% load crispy_forms_tags %}
+{% block content %}  {% crispy form %} {# yonetim/templates/list.html #}
+{% load render_table from django_tables2 %}
+
+{% block cover %}
+<table border="1">
+    {% for k in clientname %}
+        <tr>
+        <td>Client Name:</td>
+        <td>{{ k.ClientName }}</td>
+        </tr>
+        <tr>
+            <td>Currency:</td>
+            <td>{{ k.Currency }}</td>
+            </tr>
+            <tr>
+                <td>Billing Method:</td>
+                <td>{{ k.BillingMethod}}</td>
+                </tr>
+        {% endfor %}
+      {% for x in member %}
+    
+      <tr>
+        <td>Email id:</td>
+        <td>{{ x.Emailid }}</td>
+        </tr>
+        <tr>
+            <td>First Name:</td>
+            <td>{{ x.FirstName }}</td>
+            </tr>
+            
+            <tr>
+                <td>Last Name:</td>
+                <td>{{ x.LastName }}</td>
+                </tr>
+                <tr>
+                    <td>Phone:</td>
+                    <td>{{ x.Phone}}</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile:</td>
+                        <td>{{ x.Mobile }}</td>
+                        </tr>
+                        <tr>
+                            <td>Fax:</td>
+                            <td>{{ x.Fax}}</td>
+                            </tr>
+      {% endfor %}
+    </table>
+    <br>
+    {% for l in clientname %}
+     <a href="/update/{{ l.id }}">Edit Details</a>
+     {% endfor %}
+
+{% endblock cover %}
+{%endblock content%}

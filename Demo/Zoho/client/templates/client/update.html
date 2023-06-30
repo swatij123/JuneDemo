@@ -1,0 +1,68 @@
+
+    
+{% extends 'client/base.html' %} {% load static %} {% load crispy_forms_tags %}
+{% block content %}  {% crispy form %} {# yonetim/templates/list.html #}
+{% load render_table from django_tables2 %}
+
+{% block cover %}
+    <h1>Update Client Details</h1>
+    {% for k in clientname %}
+    Client Name : <b>{{  k.ClientName }}</b>
+    <br>
+    Currency : <b>{{  k.Currency }}</b>
+    <br>
+    Billing Method : <b>{{  k.BillingMethod }}</b>
+    <br><br>
+    {% endfor %}
+
+    {% for x in mymember %}
+    <form action="updaterecord/{{ x.id }}" method="post">
+    {% csrf_token %}
+    Email Id:<br>
+    <input name="Emailid" value="{{ x.Emailid }}">
+    <br><br>
+     First Name:<br>
+    <input name="FirstName" value="{{ x.FirstName }}">
+    <br><br>
+    Last Name:<br>
+    <input name="LastName" value="{{ x.LastName  }}">
+    <br><br>
+    Phone Number:<br>
+    <input name="Phone" value="{{ x.Phone }}" >
+    <br><br>
+    Mobile Number:<br>
+    <input name="MobileNumber" value="{{ x.Mobile }}">
+    <br><br>
+    Fax:<br>
+    <input name="Fax" value="{{ x.Fax }}">
+    <br><br>
+    <input type="submit" value="Submit">
+ 
+{% empty %}
+<form action="updaterecord/{{ x.id }}" method="post">
+    {% csrf_token %}
+    Email Id:<br>
+    <input name="Emailid" >
+    <br><br>
+     First Name:<br>
+    <input name="FirstName" >
+    <br><br>
+    Last Name:<br>
+    <input name="LastName" >
+    <br><br>
+    Phone Number:<br>
+    <input name="Phone" >
+    <br><br>
+    Mobile Number:<br>
+    <input name="MobileNumber" >
+    <br><br>
+    Fax:<br>
+    <input name="Fax" >
+    <br><br>
+    <input type="submit" value="Submit">
+{% endfor %}
+    </form>
+
+    
+{% endblock cover %}
+{%endblock content%} 

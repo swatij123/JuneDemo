@@ -1,0 +1,29 @@
+{% extends 'client/base.html' %} {% load static %} {% load crispy_forms_tags %}
+{% block content %}  {% crispy form %} {# yonetim/templates/list.html #}
+{% load render_table from django_tables2 %}
+
+{% block cover %}
+<div class="container" >
+<b><a href="/register/" >Add Client</a></b>
+<br><br>
+</div>
+<div class="container">
+<table border="1">
+  
+    {% for x in mymembers %}
+      <tr>
+      <td><a href="/view/{{ x.id }}"> {{ x.ClientName}}</a></td>
+      <td>{{ x.Currency }}</td>
+      <td>{{ x.BillingMethod }}</td>
+      <td><a href="/delete/{{ x.id }}">delete</a></td>
+      <td><a href="/update/{{ x.id }}">update</a></td>
+      </tr>
+     
+    {% endfor %}
+    </table>
+  </div>
+   
+    
+
+{% endblock cover %}
+{%endblock content%}
