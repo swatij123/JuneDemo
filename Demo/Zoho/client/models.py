@@ -6,9 +6,11 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 class Client(models.Model):
     
-    ClientName= models.CharField(max_length=200,blank=False,unique=True)
-    Currency = models.CharField(max_length=20, blank=False)
-    BillingMethod = models.CharField(max_length=20, blank=False)
+    ClientName= models.CharField(max_length=200,blank=False,unique=True,error_messages ={
+                    "unique":"Client Already exist."
+                    })
+    Currency = models.CharField(max_length=100, blank=False)
+    BillingMethod = models.CharField(max_length=100, blank=False)
     
     def __str__(self):
         return self.ClientName
@@ -28,10 +30,4 @@ class ClientContact(models.Model):
         return self.ClientName
   
         
-
-
-
-# Create your models here.
-
-
 # Create your models here.

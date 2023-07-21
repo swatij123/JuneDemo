@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def home(request):
-    mymembers = Client.objects.all().values()
+    mymembers = Client.objects.all().order_by('ClientName').values()
     template = loader.get_template('client/home.html')
     context = {
     'mymembers': mymembers,
