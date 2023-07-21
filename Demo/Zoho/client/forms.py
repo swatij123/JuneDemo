@@ -2,7 +2,7 @@ from msilib.schema import tables
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from numpy import require
+
 from .models import Client, ClientContact
 
 Currency_Choice =[('AUD','AUD'),
